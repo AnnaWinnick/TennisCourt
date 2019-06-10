@@ -26,4 +26,56 @@ public class Court {
         this.amenities = amenities;
         this.available = true;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public int getNumCourts() {
+        return numCourts;
+    }
+
+    public void setNumCourts(int numCourts) {
+        this.numCourts = numCourts;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
+    public String[] getAmenities() {
+        return amenities;
+    }
+
+    public void setAmenities(String[] amenities) {
+        this.amenities = amenities;
+    }
+    
+    public void book(Player p, String time, String skill){
+        
+    }
 }
