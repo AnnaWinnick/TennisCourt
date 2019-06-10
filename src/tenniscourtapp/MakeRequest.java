@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author tanishagarg
+ * @author tanishaga
  */
 public class MakeRequest {
     private static MakeRequest makeRequest;
