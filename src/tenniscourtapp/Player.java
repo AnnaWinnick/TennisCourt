@@ -41,4 +41,8 @@ public class Player {
         return location;
     }
     
+     public String getCellNumber(){
+        return cellNumber;
+    }
+    
 }
