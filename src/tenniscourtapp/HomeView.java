@@ -12,12 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 public class HomeView {
+    PlayerView playerView = PlayerView.getPlayerViewObject();
     
     
     public JPanel getHomeView(){
+        JTabbedPane tabView = new JTabbedPane();
+        tabView.add("Player", playerView.getPlayerView());
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panel.add(new Label("TennisCourt App"), BorderLayout.NORTH);
+        panel.add(tabView, BorderLayout.CENTER);
         
         return panel;
     }
