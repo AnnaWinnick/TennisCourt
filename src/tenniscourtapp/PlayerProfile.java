@@ -9,8 +9,10 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -37,6 +39,12 @@ public class PlayerProfile {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         JPanel contentPanel = new JPanel(new GridLayout(0, 2, 5, 5));
         
+        JFrame errorFrame = new JFrame();
+        errorFrame.setTitle("Error");
+        errorFrame.setSize(20, 20);
+        errorFrame.add(new JLabel("Please fill all fields"));
+        errorFrame.setVisible(false);
+        
         JLabel name = new JLabel("Name");
         JTextField nametxt = new JTextField();
         JLabel age = new JLabel("Age");
@@ -47,6 +55,8 @@ public class PlayerProfile {
         JTextField locationtxt = new JTextField();
         JLabel cellPhone = new JLabel("CellPhone");
         JTextField cellPhonetxt = new JTextField();
+        
+        
         contentPanel.add(name);
         contentPanel.add(nametxt);
         contentPanel.add(age);
@@ -64,19 +74,30 @@ public class PlayerProfile {
         panel.add(contentPanel, BorderLayout.CENTER);
         
         
-         btnAdd.addActionListener(new ActionListener() { 
-         public void actionPerformed(ActionEvent e) { 
-         
-             String name = nametxt.getText();
-             int age = NumUtility.tryParseInt(agetxt.getText(), "age");
-             String level = leveltxt.getText();
-             String location = locationtxt.getText();
-             String cellphone = cellPhonetxt.getText();
-             Player createdPlayer = new Player (name, age, level, location, cellphone);
-             playerService.savePlayer(createdPlayer);
-        } 
-    } );
+        btnAdd.addActionListener((ActionEvent e) -> {
+        String name1 = nametxt.getText();
+        int age1 = NumUtility.tryParseInt(agetxt.getText(), "age");
+        String level1 = leveltxt.getText();
+        String location1 = locationtxt.getText();
+        String cellphone = cellPhonetxt.getText();
+        
+        Scanner namescan = new Scanner(name1);
+        Scanner agescan = new Scanner(agetxt.getText());
+        Scanner levelscan = new Scanner(level1);
+        Scanner locationscan = new Scanner(location1);
+        Scanner cellscan = new Scanner(cellphone);
+        if (namescan.hasNext() && agescan.hasNext() && levelscan.hasNext() && locationscan.hasNext() && cellscan.hasNext()){
+            Player createdPlayer = new Player(name1, age1, level1, location1, cellphone);
+            playerService.savePlayer(createdPlayer);
+        }else{
+            errorFrame.setVisible(true);
+            errorFrame.setAlwaysOnTop(true);
+        }
 
+                      
+        
+       });
+      
         
         
         
