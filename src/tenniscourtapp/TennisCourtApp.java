@@ -27,12 +27,7 @@ public class TennisCourtApp {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(DisplaySize.HOME_VIEW_WIDTH, DisplaySize.HOME_VIEW_HEIGHT);
         mainFrame.setVisible(true);
-                    JFrame errorFrame = new JFrame();
-                    errorFrame.setTitle("Error");
-                    errorFrame.setSize(400, 400);
-                    errorFrame.add(new JLabel("Please fill all fields"));
-                    errorFrame.setVisible(true);
-                    errorFrame.setAlwaysOnTop(true);
+                   
     }
     
 }
