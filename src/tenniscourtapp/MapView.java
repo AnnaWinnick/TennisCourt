@@ -6,6 +6,15 @@
 package tenniscourtapp;
 
 import javax.swing.JPanel;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,11 +28,39 @@ public class MapView extends javax.swing.JPanel {
     public MapView() {
         initComponents();
     }
-    void createMapView(JPanel parent) {
-        MapView view = new MapView();
-        parent.add(view);
-    }
+    void createMapView(JFrame parent) {
+//AIzaSyDUV-xhoNdbssAdwyVDBsyC71JjXQQ-Mew
+        try {
+            String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=47.6052007,-122.093358&zoom=11&size=612x612&scale=2&maptype=roadmap&key=AIzaSyDUV-xhoNdbssAdwyVDBsyC71JjXQQ-Mew";            
+            String destinationFile = "image.jpg";
+            String str = destinationFile;
+            URL url = new URL(imageUrl);
+            InputStream is = url.openStream();
+            OutputStream os = new FileOutputStream(destinationFile);
 
+            byte[] b = new byte[2048];
+            int length;
+
+            while ((length = is.read(b)) != -1) {
+                os.write(b, 0, length);
+            }
+
+            is.close();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        parent.add(new JLabel(new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(750,700,
+                java.awt.Image.SCALE_SMOOTH))));
+
+        parent.setVisible(true);
+        parent.pack();
+
+//        MapView view = new MapView();
+//        parent.add(view);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
