@@ -12,6 +12,7 @@ import java.lang.reflect.Constructor;
 import java.util.Enumeration;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -21,9 +22,11 @@ public class TennisCourtApp {
 
     
     public static void main(String[] args) {
-        HomeView homeView = new HomeView();
+        MapView map = new MapView();
+        //HomeView homeView = new HomeView();
         JFrame mainFrame = new JFrame();
-        mainFrame.setContentPane(homeView.getHomeView());
+//        mainFrame.setContentPane(homeView.getHomeView());
+        map.createMapView(mainFrame);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(DisplaySize.HOME_VIEW_WIDTH, DisplaySize.HOME_VIEW_HEIGHT);
         mainFrame.setVisible(true);

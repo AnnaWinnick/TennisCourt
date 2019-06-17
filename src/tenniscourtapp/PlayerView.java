@@ -6,8 +6,8 @@
 package tenniscourtapp;
 
 import java.awt.BorderLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
 /**
@@ -33,7 +33,7 @@ public class PlayerView {
     public JPanel getPlayerView(){
         JPanel panel = new JPanel(new BorderLayout());
         JTabbedPane tab = new JTabbedPane();
-        tab.add("Player Profile", playerProfile.getPlayerProfileView());
+        tab.add("My Profile", playerProfile.getPlayerProfileView());
         tab.add("Make Request", makeRequest.getMakeRequestView());
         
         panel.add(tab);

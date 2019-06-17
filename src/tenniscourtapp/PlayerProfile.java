@@ -39,12 +39,6 @@ public class PlayerProfile {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         JPanel contentPanel = new JPanel(new GridLayout(0, 2, 5, 5));
         
-//        JFrame errorFrame = new JFrame();
-//        errorFrame.setTitle("Error");
-//        errorFrame.setSize(20, 20);
-//        errorFrame.add(new JLabel("Please fill all fields"));
-//        errorFrame.setVisible(false);
-//        
         JLabel name = new JLabel("Name");
         JTextField nametxt = new JTextField();
         JLabel age = new JLabel("Age");
@@ -78,18 +72,13 @@ public class PlayerProfile {
 
             public void actionPerformed(ActionEvent e) {
                 String name1 = nametxt.getText();
-                JLabel nameLabel = new JLabel(name1);
-                nametxt.remove(nametxt);
+
                 String level1 = leveltxt.getText();
-                JLabel levelLabel = new JLabel(level1);
-                leveltxt.remove(leveltxt);
+
                 String location1 = locationtxt.getText();
-                JLabel locationLabel = new JLabel(location1);
-                locationtxt.remove(locationtxt);
+
                 String cellphone = cellPhonetxt.getText();
-                JLabel cellphoneLabel = new JLabel(cellphone);
-                cellPhonetxt.remove(cellPhonetxt);
-                
+
                 Scanner namescan = new Scanner(name1);
                 String ageText = agetxt.getText();
                 Scanner ageSc = new Scanner(ageText);
@@ -98,7 +87,7 @@ public class PlayerProfile {
                     age1 = ageSc.nextInt();
                 }
                 JLabel ageLabel = new JLabel(age1+"");
-                agetxt.remove(agetxt);
+                agetxt.cut();
                 Scanner agescan = new Scanner(agetxt.getText());
                 Scanner levelscan = new Scanner(level1);
                 Scanner locationscan = new Scanner(location1);
@@ -106,7 +95,12 @@ public class PlayerProfile {
                 if (namescan.hasNext() && agescan.hasNext() && levelscan.hasNext() && locationscan.hasNext() && cellscan.hasNext()){
                     Player createdPlayer = new Player(name1, age1, level1, location1, cellphone);
                     playerService.savePlayer(createdPlayer);
-                   //move on
+                    JFrame goodFrame = new JFrame();
+                    goodFrame.setTitle("Updated");
+                    goodFrame.setSize(300,100);
+                    goodFrame.setLocation(500, 500);
+                    goodFrame.add(new JLabel("Profile Updated"));
+                    goodFrame.setVisible(true);
                 }else{
                     JFrame errorFrame = new JFrame();
                     errorFrame.setTitle("Error");
